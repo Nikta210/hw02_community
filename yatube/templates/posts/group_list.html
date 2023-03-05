@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
+{%block title %} Записи группы {{slug}} {% endblock %}
 {% block content %}
-<div class="container py-5">
-  <h1>{{text}}</h1>
+  <h1>{{group.title}}</h1>
   <p>
-    {{group}}
+    {{group.description}}
   </p>
   {% for post in posts %}
   <article>
@@ -16,10 +16,9 @@
       </li>
     </ul>
     <p>
-      {{ post.text }}
+      {{ post.text|linebreaksbr }}
     </p>
   </article>
   {% if not forloop.last %}<hr>{% endif %}
   {% endfor %}
-</div>
 {% endblock %}
