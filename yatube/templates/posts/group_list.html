@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %} 
-Записи группы {{ slug }} 
+Записи группы {{ group.slug }} 
 {% endblock %}
 {% block content %}
   <h1>{{ group.title }}</h1>
@@ -21,6 +21,8 @@
       {{ post.text|linebreaksbr }}
     </p>
   </article>
-  {% if not forloop.last %}<hr>{% endif %}
+  {% if not forloop.last %}
+  <hr>
+  {% endif %}
   {% endfor %}
 {% endblock %}

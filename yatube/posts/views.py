@@ -19,6 +19,5 @@ def group_posts(request, slug):
     context = {
         'group': group,
         'posts': posts,
-        'slug': slug,
     }
     return render(request, 'posts/group_list.html', context)
