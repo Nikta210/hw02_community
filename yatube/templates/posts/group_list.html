@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
-{%block title %} Записи группы {{slug}} {% endblock %}
+{% block title %} 
+Записи группы {{ slug }} 
+{% endblock %}
 {% block content %}
-  <h1>{{group.title}}</h1>
+  <h1>{{ group.title }}</h1>
   <p>
-    {{group.description}}
+    {{ group.description }}
   </p>
   {% for post in posts %}
   <article>
