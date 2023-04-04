@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %} 
+    Профайл пользователя {{user_obj}}
+{% endblock %}
+{% block content %}     
+    <h1>Все посты пользователя {{user_obj}} </h1>
+    <h3>Всего постов: {{user_obj.posts.all.count}}</h3>   
+    {% for post in page_obj %}
+        {% include 'includes/post_default.html' %}  
+    {% endfor %} 
+{% endblock %}   
