@@ -1,8 +1,10 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.core.paginator import Paginator
 from .models import Group, Post
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
+from .form import PostForm
+from datetime import timezone
 
 NUM_OUT_POSTS = 10
 User = get_user_model()
@@ -48,3 +50,21 @@ def post_detail(request, post_id):
         'post': post,
     }
     return render(request, 'posts/post_detail.html', context)
+
+@login_required
+def post_create(request):
+    template = 'posts/create_post.html'
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect ('')
+    form = PostForm()
+    return render(request, template, {'form':form})
+
+
+
+    
